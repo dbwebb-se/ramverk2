@@ -1,0 +1,59 @@
+language: php
+
+php:
+   - 5.6
+   - "7.0"
+   - "7.1"
+   - hhvm
+   - nightly
+
+
+
+matrix:
+    allow_failures:
+        - php: nightly
+        - php: hhvm
+
+
+
+sudo: false
+
+
+
+git:
+    submodules: false
+
+
+
+addons:
+    apt:
+        packages:
+            #- php-codesniffer
+            #- phpmd
+            #- shellcheck
+
+
+
+before_script:
+    # Prepare for automated tests
+    - make install
+
+
+
+script:
+    # Run tests
+    - make test
+
+
+
+notifications:
+    irc: "irc.freenode.org#dbwebb"
+
+    webhooks:
+        urls:
+            - https://webhooks.gitter.im/e/9758ddde9a8352ac88be
+
+        # options: [always|never|change] default: always
+        on_success: change
+        on_failure: always
+        on_start: never

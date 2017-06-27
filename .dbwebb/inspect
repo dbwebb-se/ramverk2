@@ -1,0 +1,97 @@
+#
+# Inspect, tools to inspect a kmom.
+#
+# Usage: dbwebb inspect kmom01
+#
+# Sequence executed:
+# ramverk2(), ramverk2kmom01(), ramverk2last()
+#
+
+
+
+#
+# Test ramverk2 general, always executed first
+#
+ramverk2()
+{
+    inspectIntro
+}
+
+
+
+#
+# Test general, always executed last in sequence
+#
+ramverk2last()
+{
+    inspectMe "me/redovisa" "me.html" "redovisning.html" "" "redovisa"
+}
+
+
+
+#
+# Test ramverk2 kmom01
+#
+ramverk2kmom01()
+{
+    :
+}
+
+
+
+#
+# Test ramverk2 kmom02
+#
+ramverk2kmom02()
+{
+    :
+}
+
+
+
+#
+# Test ramverk2 kmom03
+#
+ramverk2kmom03()
+{
+    :
+}
+
+
+
+#
+# Test ramverk2 kmom04
+#
+ramverk2kmom04()
+{
+    :
+}
+
+
+#
+# Test ramverk2 kmom05
+#
+ramverk2kmom05()
+{
+    :
+}
+
+
+
+#
+# Test ramverk2 kmom06
+#
+ramverk2kmom06()
+{
+    :
+}
+
+
+
+#
+# Test ramverk2 kmom10
+#
+ramverk2kmom10()
+{
+    :
+}
