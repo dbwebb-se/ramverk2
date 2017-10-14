@@ -76,7 +76,7 @@ prepare:
 
 # target: install                 - Install needed utilities locally.
 .PHONY: install
-install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install npm-install composer-install python-install
+install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install npm-install composer-install
 	@$(call HELPTEXT,$@)
 
 	@# Disable PHP tools with arguments
