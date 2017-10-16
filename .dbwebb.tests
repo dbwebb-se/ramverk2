@@ -10,7 +10,8 @@ dbwebb init-me
 #
 # Kmom01
 #
-
+rsync -av example/express me/kmom01
+dbwebb validate express
 
 
 

@@ -4,14 +4,14 @@
 # Usage: dbwebb inspect kmom01
 #
 # Sequence executed:
-# javascript1(), javascript1kmom01(), javascript1last()
+# ramverk2(), ramverk2kmom01(), ramverk2last()
 #
 
 
 #
-# Test javascript1 general
+# Test ramverk2 general
 #
-javascript1()
+ramverk2()
 {
     inspectIntro
 }
@@ -21,108 +21,106 @@ javascript1()
 #
 # Test general, last in sequence
 #
-function javascript1last()
+ramverk2last()
 {
-    inspectMe "me/redovisa" "me.html" "redovisning.html"
+    inspectMe "me/redovisa"
 }
 
 
 
 #
-# Test javascript1 kmom01
+# Check details on the repo
 #
-javascript1kmom01()
+function ramverk2repo()
 {
-    javascript1exercise "lab1" "answer.html" "uppgift/javascript-med-variabler-loopar-och-inbyggda-funktioner"
-    javascript1exercise "sandbox" "index.html" "uppgift/skapa-din-egen-sandbox-for-javascript-testprogram"
-}
-
-
-
-#
-# Test javascript1 kmom02
-#
-javascript1kmom02()
-{
-    javascript1exercise "lab2" "answer.html" "uppgift/javascript-med-funktioner"
-    javascript1exercise "flag1" "index.html" "uppgift/gor-svenska-flaggan-i-html-och-css"
-    javascript1exercise "baddie1" "index.html" "uppgift/flytta-runt-en-baddie-pa-webbsidan"
-}
-
-
-
-#
-# Test javascript1 kmom03
-#
-javascript1kmom03()
-{
-    javascript1exercise "lab3" "answer.html" "uppgift/javascript-och-arrayer"
-    javascript1exercise "flag2" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-html-och-css"
-    javascript1exercise "baddie2" "index.html" "uppgift/flytta-baddie-pa-webbsida-2"
-}
-
-
-
-#
-# Test javascript1 kmom04
-#
-javascript1kmom04()
-{
-    javascript1exercise "lab4" "answer.html" "uppgift/javascript-och-arrayer"
-    javascript1exercise "lab5" "answer.html" "uppgift/javascript-och-objekt"
-    javascript1exercise "flag3" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-och-objekt"
-    javascript1exercise "baddie3" "index.html" "uppgift/flytta-baddie-pa-webbsida-3"
-}
-
-
-
-#
-# Test javascript1 kmom
-#
-javascript1kmom05()
-{
-    javascript1exercise "dom" "index.html" "uppgift/javascript-dom-och-events"
-    javascript1exercise "flag4" "index.html" "uppgift/memory-rita-flaggor-med-javascript-och-dom"
-}
-
-
-
-#
-# Test javascript1 kmom
-#
-javascript1kmom06()
-{
-    javascript1exercise "hangman" "index.html" "uppgift/hanga-gubben-som-modul-i-javascript"
-}
-
-
-
-#
-# Test javascript1 kmom
-#
-javascript1kmom10()
-{
-    javascript1exercise "intelligence" "index.html" "javascript1/kmom10"
-}
-
-
-
-#---------------------- BELOW SHOULD BE REPLACED ----------------------------
-
-#
-# Test javascript1 sandbox
-# REPLACE with inspectLab
-#
-javascript1exercise()
-{
-    local lab="$1"
-    local main="$2"
-    local url="$3"
-    local target="me/$KMOM/$lab"
-
-    headerForTest "-- $lab" "-- ${DBW_WWW}$url"
+    local repo="$1"
+    local target="me/$repo"
+    
+    headerForTest "-- Repo $repo" "-- ${DBW_WWW}$DBW_COURSE/$target" 
     openFilesInEditor "$target"
-    checkKmomDir "$target"
-    fileIsReadable "$target/$main"
-    printUrl "$main" "$target"  
+    printUrl "" "$target"  
+
+    isGitRepo "$target"
+    hasGitTagBetween "$EXEC_DIR/$repo" "$2" "$3" > /dev/null
+
+    inspectCommand "" "$EXEC_DIR/$repo" "git remote -v" ""
+    inspectCommand "" "$EXEC_DIR/$repo" "git tag" ""
+    inspectCommand "" "$EXEC_DIR/$repo" "git status" ""
+    inspectCommand "" "$EXEC_DIR/$repo" "git log -n 20 --pretty=format:\"%h_%ad_:_%s%d_[%an]\" --graph --date=short" ""
+    #inspectCommand "" "$EXEC_DIR/$repo" "git stash" ""
+    #inspectCommand "" "$EXEC_DIR/$repo" "git checkout -b #inspect $tag" ""
+
+    # All repos does not include make test
+    # Make test need test environment
+    #inspectCommand "Makefile" "$EXEC_DIR/$repo" "make install test" ""
+}
+
+
+
+#
+# Test ramverk2 kmom01
+#
+ramverk2kmom01()
+{
+    ramverk2repo "redovisa" "1.0.0" "2.0.0"
+}
+
+
+
+#
+# Test ramverk2 kmom02
+#
+ramverk2kmom02()
+{
+    ramverk2repo "redovisa" "2.0.0" "3.0.0"
+}
+
+
+
+#
+# Test ramverk2 kmom03
+#
+ramverk2kmom03()
+{
+    ramverk2repo "redovisa" "3.0.0" "4.0.0"
+}
+
+
+
+#
+# Test ramverk2 kmom04
+#
+ramverk2kmom04()
+{
+    ramverk2repo "redovisa" "4.0.0" "5.0.0"
+}
+
+
+
+#
+# Test ramverk2 kmom
+#
+ramverk2kmom05()
+{
+    ramverk2repo "redovisa" "5.0.0" "6.0.0"
+}
+
+
+
+#
+# Test ramverk2 kmom
+#
+ramverk2kmom06()
+{
+    ramverk2repo "redovisa" "6.0.0" "7.0.0"
+}
+
+
+
+#
+# Test ramverk2 kmom
+#
+ramverk2kmom10()
+{
+    ramverk2repo "redovisa" "10.0.0" "11.0.0"
 }
