@@ -172,7 +172,7 @@ tag-prepare:
 .PHONY: setup-tools-js
 setup-tools-js:
 	@$(call HELPTEXT,$@)
-	npm install --save-dev htmlhint csslint stylelint stylelint-config-standard jscs eslint eslint-plugin-react jsonlint js-yaml html-minifier clean-css-cli uglify-js
+	npm install --save-dev htmlhint csslint stylelint jscs eslint eslint-plugin-react jsonlint js-yaml html-minifier clean-css-cli uglify-js
 
 
 
