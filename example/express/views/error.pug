@@ -1,0 +1,7 @@
+extend layout.pug
+
+block main
+    main
+        h1= error.message
+        h2= error.status
+        pre #{error.stack}

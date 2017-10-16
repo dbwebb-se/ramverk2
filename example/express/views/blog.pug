@@ -1,0 +1,8 @@
+extend layout.pug
+
+block main
+    each value, index in posts
+        section
+            h1= value.title
+            p= value.content
+            p= index

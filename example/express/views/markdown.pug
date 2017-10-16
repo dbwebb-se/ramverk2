@@ -1,0 +1,16 @@
+extend layout.pug
+
+block main
+    main
+        :markdown-it(linkify langPrefix='highlight-')
+            # Markdown
+
+            ## Another headline
+            
+            Markdown document with http://links.com and codeblocks.
+
+            Another paragraph.
+
+            ```js
+            var codeBlocks;
+            ```

@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title= title
+        block style
+            link(rel="stylesheet", href="/css/style.css")
+    body
+        block header
+            div(class="site-header") Site header
+        block navbar
+            div(class="site-navbar") Site navbar
+        block main
+            main(class="main") Mainblock
+        block footer
+            div(class="site-footer")
+                p Copyright (c) by MegaMic
+        block script
+            script(src="/js/move.js")

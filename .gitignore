@@ -1,7 +1,8 @@
-me2
-bin/
-build/
-.venv/
+/me2
+/bin/
+/build/
+/.venv/
+
 vendor/
 node_modules/
 
