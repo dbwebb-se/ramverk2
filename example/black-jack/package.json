@@ -1,0 +1,20 @@
+{
+  "name": "black-jack",
+  "version": "1.0.0",
+  "description": "A game of Black Jack to try out testing.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
+     "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "author": "Mikael Roos",
+  "license": "MIT",
+  "devDependencies": {
+    "coveralls": "^3.0.0",
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1"
+  }
+}

@@ -30,7 +30,7 @@ THIS_MAKEFILE := $(call WHERE-AM-I)
 HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
 
 # Check version  and path to command and display on one line
-CHECK_VERSION = printf "%-15s %-10s %s\n" "`basename $(1)`" "`$(1) --version $(2)`" "`which $(1)`"
+CHECK_VERSION = $(ECHO) `basename $(1)` `$(1) --version $(2)` `which $(1)`
 
 
 
@@ -62,10 +62,6 @@ JSYAML    := $(NODEMODBIN)/js-yaml
 HTMLMINI  := $(NODEMODBIN)/html-minifier
 CLEANCSS  := $(NODEMODBIN)/cleancss
 UGLIFYJS  := $(NODEMODBIN)/uglifyjs
-MOCHA     := $(NODEMODBIN)/mocha
-NYC       := $(NODEMODBIN)/nyc
-COVERALLS := $(NODEMODBIN)/coveralls
-CODECOV   := $(NODEMODBIN)/codecov
 
 
 
@@ -123,7 +119,7 @@ check: check-tools-js #check-tools-bash check-tools-php
 
 # target: test               - Run all tests.
 .PHONY: test
-test: htmlhint stylelint jscs eslint jsunittest #csslint
+test: htmlhint stylelint jscs eslint #csslint
 	@$(call HELPTEXT,$@)
 	[ ! -f composer.json ] || composer validate
 
@@ -164,10 +160,6 @@ update:
 .PHONY: tag-prepare
 tag-prepare:
 	@$(call HELPTEXT,$@)
-	@grep '^v[0-9]\.' REVISION.md | head -1
-	@grep version package.json
-	@git describe --abbrev=0
-	@git status
 
 
 
@@ -180,7 +172,7 @@ tag-prepare:
 .PHONY: setup-tools-js
 setup-tools-js:
 	@$(call HELPTEXT,$@)
-	npm install --save-dev htmlhint csslint stylelint jscs eslint eslint-plugin-react jsonlint js-yaml html-minifier clean-css-cli uglify-js mocha nyc coveralls codecov
+	npm install --save-dev htmlhint csslint stylelint jscs eslint eslint-plugin-react jsonlint js-yaml html-minifier clean-css-cli uglify-js
 
 
 
@@ -208,10 +200,6 @@ check-tools-js:
 	@$(call CHECK_VERSION, $(HTMLMINI))
 	@$(call CHECK_VERSION, $(CLEANCSS))
 	@$(call CHECK_VERSION, $(UGLIFYJS), | cut -d ' ' -f 2)
-	@$(call CHECK_VERSION, $(MOCHA))
-	@$(call CHECK_VERSION, $(NYC))
-	@#@$(call CHECK_VERSION, $(COVERALLS))
-	@#@$(call CHECK_VERSION, $(CODECOV))
 
 
 
@@ -219,7 +207,7 @@ check-tools-js:
 .PHONY: htmlhint
 htmlhint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .htmlhintrc ] || $(HTMLHINT) --ignore build/**,node_modules/** | grep -v "Config loaded:"
+	- [ ! -f .htmlhintrc ] || $(HTMLHINT) | grep -v "Config loaded:"
 
 
 
@@ -227,7 +215,7 @@ htmlhint:
 .PHONY: csslint
 csslint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .csslintrc ] || $(CSSLINT) .
+	- [ ! -f .csslintrc ] || $(CSSLINT) .
 
 
 
@@ -235,7 +223,7 @@ csslint:
 .PHONY: stylelint
 stylelint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .stylelintrc.json ] || $(STYLELINT) **/*.css
+	- [ ! -f .stylelintrc.json ] || $(STYLELINT) **/*.css
 
 
 
@@ -243,7 +231,7 @@ stylelint:
 .PHONY: stylelint-fix
 stylelint-fix:
 	@$(call HELPTEXT,$@)
-	[ ! -f .stylelintrc.json ] || $(STYLELINT) **/*.css --fix
+	- [ ! -f .stylelintrc.json ] || $(STYLELINT) **/*.css --fix
 
 
 
@@ -251,7 +239,7 @@ stylelint-fix:
 .PHONY: jscs
 jscs:
 	@$(call HELPTEXT,$@)
-	[ ! -f .jscsrc ] || $(JSCS) .
+	- [ ! -f .jscsrc ] || $(JSCS) .
 
 
 
@@ -259,7 +247,7 @@ jscs:
 .PHONY: eslint
 eslint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .eslintrc.json ] || $(ESLINT) .
+	- [ ! -f .eslintrc.json ] || $(ESLINT) .
 
 
 
@@ -268,19 +256,6 @@ eslint:
 eslint-fix:
 	@$(call HELPTEXT,$@)
 	[ ! -f .eslintrc.json ] || $(ESLINT) --fix .
-
-
-
-# target: jsunittest         - JavaScript unit tests.
-.PHONY: jsunittest
-jsunittest:
-	@$(call HELPTEXT,$@)
-ifneq ($(wildcard .nycrc),)
-	$(NYC) $(MOCHA) --reporter dot 'test/**/*.js'
-else
-	$(MOCHA) --reporter dot 'test/**/*.js'
-endif 
-
 
 
 
