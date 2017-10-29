@@ -1,0 +1,17 @@
+{
+  "name": "black-jack",
+  "version": "1.0.0",
+  "description": "A game of Black Jack to try out testing.",
+  "main": null,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha 'test/**/*.js'"
+  },
+  "author": "Mikael Roos",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}

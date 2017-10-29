@@ -1,0 +1,21 @@
+{
+  "name": "black-jack",
+  "version": "1.0.0",
+  "description": "A game of Black Jack to try out testing.",
+  "main": null,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+      "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
+      "docker-latest": "docker-compose run node_alpine npm test",
+      "docker-7": "docker-compose run node_7_alpine npm test",
+      "docker-6": "docker-compose run node_6_alpine npm test"
+  },
+  "author": "Mikael Roos",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1"
+  }
+}
