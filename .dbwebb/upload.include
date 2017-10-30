@@ -16,13 +16,12 @@
 /example/**
 
 /me/
-- /me/anax-lite/.bin
-- /me/anax-lite/cache/cimage/*
-- vendor/mos/cimage/webroot
-- vendor/**/config
-- vendor/**/docs
-- vendor/**/test
+- build/
+- build/**
 - node_modules/
+- node_modules/**
+- vendor/
+- vendor/**
 /me/**
 
 - */

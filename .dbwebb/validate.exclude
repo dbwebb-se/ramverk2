@@ -16,10 +16,22 @@
 -*.jpg
 -./.venv
 
--./me/*/vendor/*
--./me/*/node_modules/*
+
+-*/build/*
+-*/coverage/*
+-*/node_modules/*
+-*/vendor/*
 
 +./build/webroot/*
+-./build/webroot/*/build/*
+-./build/webroot/*/coverage/*
+-./build/webroot/*/node_modules/*
+-./build/webroot/*/vendor/*
+
+-./me/*
++./me/*/src/*
++./me/*/test/*
++./me/*/css/*
 
 #-./me/*/platforms/*
 #+./me/*/platforms/browser/www/*.html
