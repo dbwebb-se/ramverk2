@@ -19,6 +19,7 @@
 
 -*/build/*
 -*/coverage/*
+-./me/*
 -*/node_modules/*
 -*/vendor/*
 
@@ -28,10 +29,10 @@
 -./build/webroot/*/node_modules/*
 -./build/webroot/*/vendor/*
 
--./me/*
-+./me/*/src/*
-+./me/*/test/*
-+./me/*/css/*
+
+#+./me/*/src/*
+#+./me/*/test/*
+#+./me/*/css/*
 
 #-./me/*/platforms/*
 #+./me/*/platforms/browser/www/*.html

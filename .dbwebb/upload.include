@@ -13,15 +13,17 @@
 /.*.json
 
 /example/
+- build/
+- node_modules/
+- vendor/
+- .nyc_output
 /example/**
 
 /me/
 - build/
-- build/**
 - node_modules/
-- node_modules/**
 - vendor/
-- vendor/**
+- .nyc_output
 /me/**
 
 - */
