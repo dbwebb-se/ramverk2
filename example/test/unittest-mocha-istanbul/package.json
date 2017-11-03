@@ -7,7 +7,10 @@
     "test": "test"
   },
   "scripts": {
-      "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'"
+      "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
+      "clean": "rm -rf npm-debug.log coverage .nyc_output",
+      "preclean-all": "npm run clean",
+      "clean-all": "rm -rf node_modules"
   },
   "author": "Mikael Roos",
   "license": "MIT",

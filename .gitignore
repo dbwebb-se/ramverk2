@@ -3,6 +3,10 @@
 /build/
 /.venv/
 
+/example/**/build/
+/example/**/coverage/
+/example/**/.nyc_output/
+
 vendor/
 node_modules/
 

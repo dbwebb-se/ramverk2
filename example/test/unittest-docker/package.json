@@ -10,7 +10,10 @@
       "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
       "docker-latest": "docker-compose run node_alpine npm test",
       "docker-7": "docker-compose run node_7_alpine npm test",
-      "docker-6": "docker-compose run node_6_alpine npm test"
+      "docker-6": "docker-compose run node_6_alpine npm test",
+      "clean": "rm -rf npm-debug.log coverage .nyc_output",
+      "preclean-all": "npm run clean",
+      "clean-all": "rm -rf node_modules"
   },
   "author": "Mikael Roos",
   "license": "MIT",

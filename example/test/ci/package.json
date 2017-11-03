@@ -8,10 +8,12 @@
   },
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
-    "jscs": "jscs .",
     "eslint": "eslint .",
     "report-coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov"
+    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "clean": "rm -rf build npm-debug.log",
+    "preclean-all": "npm run clean",
+    "clean-all": "rm -rf node_modules"
   },
   "author": "Mikael Roos",
   "license": "MIT",
@@ -20,7 +22,6 @@
     "coveralls": "^3.0.0",
     "eslint": "^4.10.0",
     "javascript-style-guide": "^0.9.10",
-    "jscs": "^3.0.7",
     "mocha": "^4.0.1",
     "nyc": "^11.2.1"
   }
