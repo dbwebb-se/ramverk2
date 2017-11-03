@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
+    "posttest": "npm run eslint",
     "eslint": "eslint .",
     "clean": "rm -rf build npm-debug.log",
     "preclean-all": "npm run clean",
