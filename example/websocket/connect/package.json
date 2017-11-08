@@ -1,0 +1,19 @@
+{
+  "name": "websocket-connect",
+  "version": "1.0.0",
+  "description": "Demo to connect websocket client to server.",
+  "main": "null",
+  "scripts": {
+    "test": "null",
+    "start": "node server.js",
+    "clean": "rm -rf node_modules package-lock.json"
+  },
+  "keywords": [
+    "websocket"
+  ],
+  "author": "Mikael Roos",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^2.0.4"
+  }
+}
