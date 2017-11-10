@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5 websockets</title>
+<link rel="stylesheet" href="client.css">
+</head>
+
+<body>
+<h1>Websocket</h1>
+<h2>Broadcast</h2>
+<p>This is a client for an broadcast-server. You have to run your own server.</p>
+
+<p>Open up devtools and see output in the console and network tab.</p>
+
+<form id="form1">
+  
+  <p>
+    <label>Connect: </label><br>
+    <input id="connect_url" type="text" value="ws://localhost:1337/" >
+    <input id="connect" type="button" value="Connect">
+    <input id="close" type="button" value="Close connection">
+  </p>
+
+  <p>
+    <label>Send message: </label><br>
+    <input id="message" type="text">
+    <input id="send_message" type="button" value="Send message">
+  </p>
+
+  <p>
+    <label>Log: </label><br>
+    <div id="output" class="output"></div>
+  </p>
+
+</form> 
+
+<script src="client.js"></script>
+</body>
+</html>

@@ -1,19 +1,23 @@
 /**
- * Websocket and node builtin httpd server implementing an echo server.
+ * Echo server using websockets and express.
  */
 "use strict";
 
 const port = process.env.DBWEBB_PORT || 1337;
+const express = require("express");
 const http = require("http");
-const server = http.createServer((request, response) => {
-    console.log("Webserver received: " + request.url);
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World\n");
-});
-
+const url = require("url");
 const WebSocket = require("ws");
-const wss = new WebSocket.Server({
-    server: server
+
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+
+
+// Answer on all http requests
+app.use(function (req, res) {
+    res.send({ msg: "hello" });
 });
 
 
@@ -41,10 +45,7 @@ wss.on("connection", (ws, req) => {
 
 
 
-server.listen(port, (err) => {
-    if (err) {
-        return console.log("Something bad happened", err);
-    }
-
+// Startup server
+server.listen(port, () => {
     console.log(`Server is listening on ${port}`);
 });
