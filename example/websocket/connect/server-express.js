@@ -6,7 +6,7 @@
 const port = process.env.DBWEBB_PORT || 1337;
 const express = require("express");
 const http = require("http");
-const url = require("url");
+//const url = require("url");
 const WebSocket = require("ws");
 
 const app = express();
@@ -25,7 +25,7 @@ app.use(function (req, res) {
 // Setup for websocket requests.
 // Docs: https://github.com/websockets/ws/blob/master/doc/ws.md
 wss.on("connection", (ws, req) => {
-    const location = url.parse(req.url, true);
+    //const location = url.parse(req.url, true);
     // You might use location.query.access_token to authenticate or share
     // sessions or req.headers.cookie
     // (see http://stackoverflow.com/a/16395220/151312)

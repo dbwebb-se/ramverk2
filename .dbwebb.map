@@ -12,10 +12,9 @@ me/kmom02/docker
 
 # kmom03
 me/kmom03/unittest
-me/kmom03/tdd
+#?me/kmom03/functest
 
 # kmom04
-me/kmom04/functest
 me/kmom04/websocket
 
 # kmom05
@@ -29,3 +28,4 @@ me/kmom10/
 
 # redovisa
 me/redovisa
+me/app

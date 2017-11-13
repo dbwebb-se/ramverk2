@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5 websockets</title>
+<link rel="stylesheet" href="client.css">
+</head>
+
+<body>
+<h1>Websocket</h1>
+<h2>Subprotocols (Broadcast/Echo)</h2>
+<p>Select what subprotocol to use when connecting to an server. Each server supports its own variants of subprotocols.</p>
+
+<ul>
+    <li><code>ws://dbwebb.se:1337/</code> supports broadcast-protocol, echo-protocol/none.</li>
+    <li><code>ws://demos.kaazing.com/echo</code> support no subprotocols.</li>
+    <li><code>ws://localhost:1337/</code> supports text or json</li>
+</ul>
+
+<p>Open up devtools and see output in the console and network tab.</p>
+
+<form id="form1">
+  
+  <p>
+    <label>Connect: </label><br>
+    <input id="connect_url" type="text" value="ws://localhost:1337/" >
+    <select id="protocol">
+        <option value="">Default protocol, non chosen</option>
+        <option value="echo-protocol">echo-protocol</option>
+        <option value="broadcast-protocol">broadcast-protocol</option>
+        <option value="text">text</option>
+        <option value="json">json</option>
+    </select>
+    <br>
+    <input id="connect" type="button" value="Connect">
+    <input id="close" type="button" value="Close connection">
+  </p>
+
+  <p>
+    <label>Send message: </label><br>
+    <input id="message" type="text">
+    <input id="send_message" type="button" value="Send message">
+  </p>
+
+  <p>
+    <label>Log: </label><br>
+    <div id="output" class="output"></div>
+  </p>
+
+</form> 
+
+<script src="client.js"></script>
+</body>
+</html>

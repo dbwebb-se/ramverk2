@@ -1,5 +1,5 @@
 /**
- * Minimal http server.
+ * Minimal Node builtin http server.
  */
 "use strict";
 
