@@ -20,7 +20,7 @@ const wss = new WebSocket.Server({
 
 // Setup for websocket requests.
 // Docs: https://github.com/websockets/ws/blob/master/doc/ws.md
-wss.on("connection", (ws, req) => {
+wss.on("connection", (ws/*, req*/) => {
     console.log("Connection received.");
     // console.log(ws);
     // console.log(req);

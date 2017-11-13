@@ -6,7 +6,7 @@
 const port = process.env.DBWEBB_PORT || 1337;
 const express = require("express");
 const http = require("http");
-const url = require("url");
+//const url = require("url");
 const WebSocket = require("ws");
 
 const app = express();
@@ -37,13 +37,13 @@ wss.broadcastExcept = (ws, data) => {
         }
     });
     console.log(`Broadcasted data to ${clients} (${wss.clients.size}) clients.`);
-}
+};
 
 
 
 // Setup for websocket requests.
 // Docs: https://github.com/websockets/ws/blob/master/doc/ws.md
-wss.on("connection", (ws, req) => {
+wss.on("connection", (ws /*, req*/) => {
     console.log("Connection received. Adding client.");
 
     wss.broadcastExcept(ws, `New client connected (${wss.clients.size}).`);

@@ -24,7 +24,7 @@ app.use(function (req, res) {
 
 // Setup for websocket requests.
 // Docs: https://github.com/websockets/ws/blob/master/doc/ws.md
-wss.on("connection", (ws, req) => {
+wss.on("connection", (/*ws, req*/) => {
     //const location = url.parse(req.url, true);
     // You might use location.query.access_token to authenticate or share
     // sessions or req.headers.cookie
