@@ -1,12 +1,10 @@
-#
-# Image for running test suite.
-#
+# Use a base image
 FROM node:6
 
+# Create a workdir
 RUN mkdir -p /app
 WORKDIR /app
 
+# Install npm packages
 COPY package.json /app
 RUN npm install
-
-EXPOSE 3000

@@ -1,5 +1,5 @@
 # Use a base image
-FROM node:latest
+FROM node:8
 
 # Create a workdir
 RUN mkdir -p /app

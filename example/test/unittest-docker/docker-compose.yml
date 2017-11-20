@@ -6,17 +6,15 @@ services:
             dockerfile: docker/Dockerfile-node-latest
         volumes:
             - ./:/app/
-        ports:
-            - "3000:3000"
+            - /app/node_modules/
 
-    node_7:
+    node_8:
         build:
             context: .
-            dockerfile: docker/Dockerfile-node-7
+            dockerfile: docker/Dockerfile-node-8
         volumes:
             - ./:/app/
-        ports:
-            - "3000:3000"
+            - /app/node_modules/
 
     node_6:
         build:
@@ -24,8 +22,7 @@ services:
             dockerfile: docker/Dockerfile-node-6
         volumes:
             - ./:/app/
-        ports:
-            - "3000:3000"
+            - /app/node_modules/
 
     node_alpine:
         build:
@@ -33,17 +30,15 @@ services:
             dockerfile: docker/Dockerfile-node-alpine
         volumes:
             - ./:/app/
-        ports:
-            - "3000:3000"
+            - /app/node_modules/
 
-    node_7_alpine:
+    node_8_alpine:
         build:
             context: .
-            dockerfile: docker/Dockerfile-node-7-alpine
+            dockerfile: docker/Dockerfile-node-8-alpine
         volumes:
             - ./:/app/
-        ports:
-            - "3000:3000"
+            - /app/node_modules/
 
     node_6_alpine:
         build:
@@ -51,5 +46,4 @@ services:
             dockerfile: docker/Dockerfile-node-6-alpine
         volumes:
             - ./:/app/
-        ports:
-            - "3000:3000"
+            - /app/node_modules/
