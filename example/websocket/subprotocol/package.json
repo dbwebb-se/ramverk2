@@ -16,5 +16,8 @@
   "devDependencies": {
     "express": "^4.16.2",
     "ws": "^3.3.1"
+  },
+  "dependencies": {
+    "wscat": "^2.0.1"
   }
 }
