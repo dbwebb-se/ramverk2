@@ -1,0 +1,26 @@
+version: '3'
+services:
+    express:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - DBWEBB_DSN=mongodb://mongodb:27017/mumin
+        volumes:
+            - ./:/app/
+            - /app/node_modules/
+        ports:
+            - 1337:1337
+        links:
+            - mongodb
+        command: "node src/server.js"
+
+    mongodb:
+        image: mongo
+        environment:
+            - MONGO_DATA_DIR=/data/db
+        volumes:
+            - ./data/db:/data/db
+        ports:
+            - 27017:27017
+        command: mongod

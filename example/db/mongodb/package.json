@@ -1,0 +1,25 @@
+{
+  "name": "mongo-example",
+  "version": "1.0.0",
+  "description": "Example using MongoDB with Node.",
+  "main": null,
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "test",
+    "clean": "rm -rf npm-debug.log coverage .nyc_output package-lock.json",
+    "preclean-all": "npm run clean",
+    "clean-all": "rm -rf node_modules",
+    "preclean-all-data": "npm run clean-all",
+    "clean-all-data": "rm -rf data"
+  },
+  "keywords": [
+    "mongodb",
+    "education"
+  ],
+  "author": "Mikael Roos",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33"
+  }
+}
