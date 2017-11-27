@@ -9,13 +9,14 @@ ACRONYM=$1
 # Potatoe if needed
 [ -z $2 ] || dbwebb run potatoe $ACRONYM
 
-# Download it
+# Download it (what if we get it from GitHub instead?)
 rm -rf me/redovisa/{*,.??*}
 dbwebb init-me
-dbwebb --force download redovisa $ACRONYM || exit -1
+dbwebb --force download redovisa $ACRONYM || exit 1
 
 # Show details
 pushd me/redovisa
+[ -d .git ] || (echo "No git-repo on highest level" && ls -l && exit 1)
 git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
 git remote -v
 git tag
