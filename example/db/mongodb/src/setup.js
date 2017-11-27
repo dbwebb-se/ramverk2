@@ -17,7 +17,7 @@ const docs = JSON.parse(fs.readFileSync(
 
 // Do it.
 resetCollection(dsn, "crowd", docs)
-.catch(err => console.log(err));
+    .catch(err => console.log(err));
 
 
 
@@ -38,8 +38,9 @@ resetCollection(dsn, "crowd", docs)
 async function resetCollection(dsn, colName, doc) {
     const db  = await mongo.connect(dsn);
     const col = await db.collection(colName);
-    const op1 = await col.deleteMany();
-    const op2 = await col.insertMany(doc);
+
+    await col.deleteMany();
+    await col.insertMany(doc);
 
     await db.close();
 }

@@ -25,9 +25,10 @@ app.get("/", (req, res) => {
 app.get("/list", async (request, response) => {
     try {
         let res = await findInCollection(dsn, "crowd", {}, {}, 0);
+
         console.log(res);
         response.json(res);
-    } catch(err) {
+    } catch (err) {
         console.log(err);
         response.json(err);
     }

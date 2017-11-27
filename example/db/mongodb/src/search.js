@@ -34,16 +34,17 @@ const limit2 = 3;
 (async () => {
     // Find using .then()
     findInCollection(dsn, "crowd", criteria1, projection1, limit1)
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 
     // Find using await
     try {
         let res = await findInCollection(
             dsn, "crowd", criteria2, projection2, limit2
         );
+
         console.log(res);
-    } catch(err) {
+    } catch (err) {
         console.log(err);
     }
 })();
