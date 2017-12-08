@@ -6,10 +6,12 @@
 /example/**/build/
 /example/**/coverage/
 /example/**/.nyc_output/
+/example/**/data/db/
 
 vendor/
 node_modules/
 package-lock.json
+npm-debug.log
 
 __pycache__
 *.pyc
