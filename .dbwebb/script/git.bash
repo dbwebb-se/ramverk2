@@ -4,22 +4,29 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/functions.bash" 
 
-ACRONYM=$1
+if [ -z $1 ]; then
+    echo "Usage: <url to git>"
+    exit 1
+fi
 
-# Potatoe if needed
-[ -z $2 ] || dbwebb run potatoe $ACRONYM
+GIT="${1}.git"
+export DBWEBB_HOST="${DBWEBB_HOST:-1338}"
+
 
 # Download it (what if we get it from GitHub instead?)
-sudo rm -rf me/redovisa/{*,.??*}
-sudo rm -rf me/app/{*,.??*}
-dbwebb init-me
-yes | dbwebb --force download redovisa $ACRONYM || exit 1
-yes | dbwebb --force download app $ACRONYM || exit 1
+TARGET="me/git"
+install -d $TARGET
+sudo rm -rf $TARGET/{*,.??*}
+git clone $GIT $TARGET
 
-check_dir_for_git "me/redovisa"
-check_dir_for_git "me/app"
+check_dir_for_git $TARGET
 
-# export DBWEBB_HOST=1338
+pushd $TARGET
+npm run
+npm test
+npm start
+popd
+
 
 # me/redovisa/
 # make install / npm install
