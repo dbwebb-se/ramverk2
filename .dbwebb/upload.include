@@ -17,9 +17,11 @@
 - node_modules/
 - vendor/
 - .nyc_output
+- data/db
 /example/**
 
 /me/
+- data/db
 - build/
 - node_modules/
 - vendor/
