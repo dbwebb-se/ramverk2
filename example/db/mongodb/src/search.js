@@ -67,11 +67,12 @@ const limit2 = 3;
  * @return {Promise<array>} The resultset as an array.
  */
 async function findInCollection(dsn, colName, criteria, projection, limit) {
-    const db  = await mongo.connect(dsn);
+    const client  = await mongo.connect(dsn);
+    const db = await client.db();
     const col = await db.collection(colName);
     const res = await col.find(criteria, projection).limit(limit).toArray();
 
-    await db.close();
+    await client.close();
 
     return res;
 }
