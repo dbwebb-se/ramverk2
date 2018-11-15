@@ -36,11 +36,12 @@ resetCollection(dsn, "crowd", docs)
  * @return {Promise<void>} Void
  */
 async function resetCollection(dsn, colName, doc) {
-    const db  = await mongo.connect(dsn);
+    const client  = await mongo.connect(dsn);
+    const db = await client.db();
     const col = await db.collection(colName);
 
     await col.deleteMany();
     await col.insertMany(doc);
 
-    await db.close();
+    await client.close();
 }
