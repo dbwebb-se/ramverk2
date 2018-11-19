@@ -5,7 +5,11 @@ class MessageBoard extends Component {
         return (
             <div className="message-board">
                 <h1>{ this.props.message }</h1>
-                <p>- {this.props.author}</p>
+                {this.props.author !== "" &&
+                    <p>
+                        - {this.props.author}
+                    </p>
+                }
             </div>
         )
     }
