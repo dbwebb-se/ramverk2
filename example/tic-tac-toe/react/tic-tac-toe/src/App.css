@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Sigmar+One');
+
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner,
+button::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+}
+
+p {
+    font-size: 1em;
+}
+
+@media (min-width: 64em) {
+    html {
+        font-size: 112.5%;
+    }
+}
+
+h1 {
+    font-size: 4em;
+    font-family: 'Sigmar One', cursive;
+    font-weight: normal;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.App {
+    width: 64rem;
+    box-sizing: border-box;
+    padding: 8rem;
+    text-align: center;
+    background-color: #ddd;
+}
+
+.game {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.board-row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+}
