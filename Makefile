@@ -47,7 +47,7 @@ help:
 # ---------------------------------------------------------------------------
 #
 # Specifics
-# 
+#
 
 # Add local bin path for test tools
 PATH := "$(PWD)/bin:$(PWD)/vendor/bin:$(PWD)/node_modules/.bin:$(PATH)"
@@ -62,8 +62,8 @@ PHPMD   := bin/phpmd
 
 
 # ----------------------------------------------------------------------------
-# 
-# Highlevel targets 
+#
+# Highlevel targets
 #
 # target: prepare                 - Prepare the build directory.
 .PHONY: prepare
@@ -84,8 +84,8 @@ install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install n
 
 	curl -Lso $(PHPMD) http://static.phpmd.org/php/latest/phpmd.phar && chmod 755 $(PHPMD)
 
-	@# Shellcheck 
-	@# tree (inspect) 
+	@# Shellcheck
+	@# tree (inspect)
 	@# python through reqs and venv
 	@# Add to check on dbwebb-cli to try all parts php in path, make, composer, node, npm, python3, python, mm.
 
@@ -128,13 +128,14 @@ clean-all: clean
 	@$(call HELPTEXT,$@)
 	rm -rf bin
 	rm -rf node_modules
+	rm -f package-lock.json
 	rm -rf vendor
 
 
 
 # ----------------------------------------------------------------------------
-# 
-# Shortcuts for frequent usage 
+#
+# Shortcuts for frequent usage
 #
 # target: validate                - Execute dbwebb validate what=part-to-validate.
 .PHONY: validate
@@ -158,14 +159,14 @@ inspect: dbwebb-inspect
 
 
 # ----------------------------------------------------------------------------
-# 
-# Python 
+#
+# Python
 #
 # target: python-install          - Install Python utilities locally.
 .PHONY: python-install
 python-install: prepare
 	@$(call HELPTEXT,$@)
-	[ ! -f .requirements.txt ] || python3 -m pip install --requirement .requirements.txt 
+	[ ! -f .requirements.txt ] || python3 -m pip install --requirement .requirements.txt
 
 
 
@@ -173,7 +174,7 @@ python-install: prepare
 .PHONY: python-upgrade
 python-upgrade: prepare
 	@$(call HELPTEXT,$@)
-	[ ! -f .requirements.txt ] || python3 -m pip install --upgrade --requirement .requirements.txt 
+	[ ! -f .requirements.txt ] || python3 -m pip install --upgrade --requirement .requirements.txt
 
 
 
@@ -181,13 +182,13 @@ python-upgrade: prepare
 .PHONY: python-venv
 python-venv:
 	@$(call HELPTEXT,$@)
-	python3 -m venv .venv 
+	python3 -m venv .venv
 
 
 
 # ----------------------------------------------------------------------------
-# 
-# dbwebb cli 
+#
+# dbwebb cli
 #
 # target: dbwebb-install          - Download and install dbwebb-cli.
 .PHONY: dbwebb-install
@@ -210,7 +211,7 @@ dbwebb-testrepo:
 
 
 # ----------------------------------------------------------------------------
-# 
+#
 # dbwebb validate & publish
 #
 # target: dbwebb-validate-install - Download and install dbwebb-validate.
@@ -254,8 +255,8 @@ dbwebb-publish-example: prepare
 
 
 # ----------------------------------------------------------------------------
-# 
-# dbwebb inspect 
+#
+# dbwebb inspect
 #
 # target: dbwebb-inspect-install  - Download and install dbwebb-inspect.
 .PHONY: dbwebb-inspect-install
@@ -283,7 +284,7 @@ dbwebb-inspect:
 
 
 # ----------------------------------------------------------------------------
-# 
+#
 # npm
 #
 # target: npm-install             - Install npm packages for development.
@@ -303,8 +304,8 @@ npm-update:
 
 
 # ----------------------------------------------------------------------------
-# 
-# composer 
+#
+# composer
 #
 # target: composer-install        - Install composer packages for development.
 .PHONY: composer-install
