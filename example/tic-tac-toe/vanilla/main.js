@@ -7,34 +7,31 @@
         xIsNext: true,
     };
 
-    state.history[0].squares[2] = "X";
-
     let root = document.getElementById('root');
-
     let app = document.createElement("App");
-    app.className = "App";
-
     let title = document.createElement("h1");
-    title.textContent = "tic-tac-toe";
-
     let game = document.createElement("div");
-    game.className = "game";
-
     let gameBoard = document.createElement("div");
-    gameBoard.className = "game-board";
-
     let gameInfo = document.createElement("div");
+    let nextPlayer = document.createElement("div");
+    let historyButtons = document.createElement("div");
+
+    app.className = "App";
+    title.textContent = "tic-tac-toe";
+    game.className = "game";
+    gameBoard.className = "game-board";
     gameInfo.className = "game-info";
 
     for (let i = 0; i < 3; i++) {
         let boardRow = document.createElement("div");
+
         boardRow.className = "board-row";
 
         for (let j = 0; j < 3; j++) {
             let square = document.createElement("div");
+
             square.className = "square";
             square.dataset.index = i * 3 + j;
-
             square.addEventListener("click", handleClick);
             boardRow.appendChild(square);
         }
@@ -43,22 +40,74 @@
     }
 
     game.appendChild(gameBoard);
+    gameInfo.appendChild(nextPlayer);
+    gameInfo.appendChild(historyButtons);
     game.appendChild(gameInfo);
     app.appendChild(title);
     app.appendChild(game);
     root.appendChild(app);
 
     function renderBoard() {
-        let htmlSquares = document.getElementsByClassName("square");
-        let squares = state.history[state.stepNumber].squares;
+        const htmlSquares = document.getElementsByClassName("square");
+        const squares = state.history[state.stepNumber].squares;
+
         squares.map((item, index) => {
             htmlSquares[index].textContent = item;
         });
     }
 
-    function handleClick(event) {
-        console.log(this);
-        console.log(event);
+    function renderNextPlayer(winner) {
+        nextPlayer.textContent = 'Next player: ' + (state.xIsNext ? 'X' : 'O');
+        if (winner) {
+            nextPlayer.textContent = "Winner: " + winner;
+        }
+    }
+
+    function renderHistoryButtons() {
+        const history = state.history;
+        const current = history[state.stepNumber];
+
+        while (historyButtons.lastChild) {
+            historyButtons.removeChild(historyButtons.lastChild);
+        }
+
+        const moves = history.map((step, move) => {
+            const desc = move ?
+            'Go to move #' + move :
+            'Go to game start';
+
+            let button = document.createElement("button");
+
+            button.textContent = desc;
+            button.addEventListener("click", () => jumpTo(move));
+
+            historyButtons.appendChild(button);
+        });
+    }
+
+    function handleClick() {
+        const square = this.dataset.index;
+        const history = state.history.slice(0, state.stepNumber + 1);
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
+
+        if (calculateWinner(squares) || squares[square]) {
+            renderNextPlayer();
+            return;
+        }
+
+        squares[square] = state.xIsNext ? 'X' : 'O';
+        state = {
+            history: history.concat([{
+                squares: squares,
+            }]),
+            stepNumber: history.length,
+            xIsNext: !state.xIsNext,
+        };
+
+        renderBoard();
+        renderNextPlayer(calculateWinner(squares));
+        renderHistoryButtons();
     }
 
     function calculateWinner(squares) {
@@ -81,5 +130,6 @@
         return null;
     }
 
-    renderBoard();
+    renderNextPlayer();
+    renderHistoryButtons();
 })();
