@@ -21,6 +21,7 @@
     game.className = "game";
     gameBoard.className = "game-board";
     gameInfo.className = "game-info";
+    historyButtons.className = "history-buttons";
 
     for (let i = 0; i < 3; i++) {
         let boardRow = document.createElement("div");
@@ -85,6 +86,19 @@
         });
     }
 
+    function jumpTo(step) {
+        state.stepNumber = step;
+        state.xIsNext = (step % 2) === 0;
+
+        const history = state.history.slice(0, state.stepNumber + 1);
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
+
+        renderBoard();
+        renderNextPlayer(calculateWinner(squares));
+        renderHistoryButtons();
+    }
+
     function handleClick() {
         const square = this.dataset.index;
         const history = state.history.slice(0, state.stepNumber + 1);
@@ -92,7 +106,7 @@
         const squares = current.squares.slice();
 
         if (calculateWinner(squares) || squares[square]) {
-            renderNextPlayer();
+            renderNextPlayer(calculateWinner(squares));
             return;
         }
 

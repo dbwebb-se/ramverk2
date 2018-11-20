@@ -76,3 +76,8 @@ h1 {
     text-align: center;
     width: 34px;
 }
+
+.history-buttons {
+    display: flex;
+    flex-direction: column;
+}
