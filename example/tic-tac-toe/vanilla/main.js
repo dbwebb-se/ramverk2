@@ -137,8 +137,8 @@
         ];
 
         for (var i = 0; i < lines.length; i++) {
-            var a = lines[i][0]
-            var b = lines[i][1]
+            var a = lines[i][0];
+            var b = lines[i][1];
             var c = lines[i][2];
 
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
