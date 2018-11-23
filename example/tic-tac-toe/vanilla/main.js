@@ -52,7 +52,7 @@
         var htmlSquares = document.getElementsByClassName("square");
         var squares = state.history[state.stepNumber].squares;
 
-        squares.map((item, index) => {
+        squares.map(function(item, index) {
             htmlSquares[index].textContent = item;
         });
     }
@@ -137,7 +137,9 @@
         ];
 
         for (var i = 0; i < lines.length; i++) {
-            var [a, b, c] = lines[i];
+            var a = lines[i][0]
+            var b = lines[i][1]
+            var c = lines[i][2];
 
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
                 return squares[a];
