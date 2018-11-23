@@ -1,5 +1,5 @@
 (function () {
-    let state = {
+    var state = {
         history: [{
             squares: Array(9).fill(null),
         }],
@@ -7,14 +7,14 @@
         xIsNext: true,
     };
 
-    let root = document.getElementById('root');
-    let app = document.createElement("App");
-    let title = document.createElement("h1");
-    let game = document.createElement("div");
-    let gameBoard = document.createElement("div");
-    let gameInfo = document.createElement("div");
-    let nextPlayer = document.createElement("div");
-    let historyButtons = document.createElement("div");
+    var root = document.getElementById('root');
+    var app = document.createElement("App");
+    var title = document.createElement("h1");
+    var game = document.createElement("div");
+    var gameBoard = document.createElement("div");
+    var gameInfo = document.createElement("div");
+    var nextPlayer = document.createElement("div");
+    var historyButtons = document.createElement("div");
 
     app.className = "App";
     title.textContent = "tic-tac-toe";
@@ -23,13 +23,13 @@
     gameInfo.className = "game-info";
     historyButtons.className = "history-buttons";
 
-    for (let i = 0; i < 3; i++) {
-        let boardRow = document.createElement("div");
+    for (var i = 0; i < 3; i++) {
+        var boardRow = document.createElement("div");
 
         boardRow.className = "board-row";
 
-        for (let j = 0; j < 3; j++) {
-            let square = document.createElement("div");
+        for (var j = 0; j < 3; j++) {
+            var square = document.createElement("div");
 
             square.className = "square";
             square.dataset.index = i * 3 + j;
@@ -49,8 +49,8 @@
     root.appendChild(app);
 
     function renderBoard() {
-        const htmlSquares = document.getElementsByClassName("square");
-        const squares = state.history[state.stepNumber].squares;
+        var htmlSquares = document.getElementsByClassName("square");
+        var squares = state.history[state.stepNumber].squares;
 
         squares.map((item, index) => {
             htmlSquares[index].textContent = item;
@@ -65,22 +65,22 @@
     }
 
     function renderHistoryButtons() {
-        const history = state.history;
-        const current = history[state.stepNumber];
+        var history = state.history;
 
         while (historyButtons.lastChild) {
             historyButtons.removeChild(historyButtons.lastChild);
         }
 
-        const moves = history.map((step, move) => {
-            const desc = move ?
-            'Go to move #' + move :
-            'Go to game start';
-
-            let button = document.createElement("button");
+        history.map(function(step, move) {
+            var desc = move ?
+                'Go to move #' + move :
+                'Go to game start';
+            var button = document.createElement("button");
 
             button.textContent = desc;
-            button.addEventListener("click", () => jumpTo(move));
+            button.addEventListener("click", function() {
+                jumpTo(move);
+            });
 
             historyButtons.appendChild(button);
         });
@@ -90,9 +90,9 @@
         state.stepNumber = step;
         state.xIsNext = (step % 2) === 0;
 
-        const history = state.history.slice(0, state.stepNumber + 1);
-        const current = history[history.length - 1];
-        const squares = current.squares.slice();
+        var history = state.history.slice(0, state.stepNumber + 1);
+        var current = history[history.length - 1];
+        var squares = current.squares.slice();
 
         renderBoard();
         renderNextPlayer(calculateWinner(squares));
@@ -100,10 +100,10 @@
     }
 
     function handleClick() {
-        const square = this.dataset.index;
-        const history = state.history.slice(0, state.stepNumber + 1);
-        const current = history[history.length - 1];
-        const squares = current.squares.slice();
+        var square = this.dataset.index;
+        var history = state.history.slice(0, state.stepNumber + 1);
+        var current = history[history.length - 1];
+        var squares = current.squares.slice();
 
         if (calculateWinner(squares) || squares[square]) {
             renderNextPlayer(calculateWinner(squares));
@@ -125,7 +125,7 @@
     }
 
     function calculateWinner(squares) {
-        const lines = [
+        var lines = [
             [0, 1, 2],
             [3, 4, 5],
             [6, 7, 8],
@@ -135,12 +135,15 @@
             [0, 4, 8],
             [2, 4, 6],
         ];
-        for (let i = 0; i < lines.length; i++) {
-            const [a, b, c] = lines[i];
+
+        for (var i = 0; i < lines.length; i++) {
+            var [a, b, c] = lines[i];
+
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
                 return squares[a];
             }
         }
+
         return null;
     }
 
