@@ -1,40 +1,96 @@
-var state = {
-    current: 0,
-    previous: 0,
-    decimals: null,
-    operatorClicked: false,
-    operator: null,
-};
-
-var utilities = {
-    divide: function() {
-        state.operator = (a, b) => a / b;
-        utilities.setPrevious();
-    },
-
-    multiply: function() {
-        state.operator = (a, b) => a * b;
-        utilities.setPrevious();
-    },
-
-    subtract: function () {
-        state.operator = (a, b) => a - b;
-        utilities.setPrevious();
-    },
-
-    add: function() {
-        state.operator = (a, b) => a + b;
-        utilities.setPrevious();
-    },
-
-    setPrevious: function() {
-        state.previous = state.current;
-        state.operatorClicked = true;
-    },
-};
-
 (function () {
     "use strict";
+
+    var state = {
+        current: 0,
+        previous: 0,
+        decimals: null,
+        operatorClicked: false,
+        operator: null,
+    };
+
+    var utilities = {
+        divide: function() {
+            state.operator = (a, b) => a / b;
+            utilities.setPrevious();
+        },
+
+        multiply: function() {
+            state.operator = (a, b) => a * b;
+            utilities.setPrevious();
+        },
+
+        subtract: function () {
+            state.operator = (a, b) => a - b;
+            utilities.setPrevious();
+        },
+
+        add: function() {
+            state.operator = (a, b) => a + b;
+            utilities.setPrevious();
+        },
+
+        clear: function() {
+            state.current = 0;
+            utilities.updateDisplay();
+        },
+
+        sign: function() {
+            state.current = -state.current;
+            utilities.updateDisplay();
+        },
+
+        percentage: function() {
+            state.current = state.current / 100;
+            utilities.updateDisplay();
+        },
+
+        dot: function() {
+            if (String(state.current).indexOf(".") === -1) {
+                state.decimals = 1;
+            }
+        },
+
+        equal: function() {
+            state.current = state.operator(
+                state.current,
+                state.previous
+            );
+
+            state.previous = 0;
+
+            utilities.updateDisplay();
+        },
+
+        append: function() {
+            var number = parseInt(this.textContent);
+
+            if (state.operatorClicked) {
+                state.current = 0;
+                state.decimals = null;
+                state.operatorClicked = false;
+            }
+
+            if (state.decimals) {
+                state.current += number / 10**state.decimals++;
+            } else {
+                state.current = state.current * 10 + number;
+            }
+
+            utilities.updateDisplay();
+        },
+
+        updateDisplay: function() {
+            var display = document.getElementById("display");
+
+            display.innerHTML = state.current;
+        },
+
+        setPrevious: function() {
+            state.previous = state.current;
+            state.operatorClicked = true;
+        },
+    };
 
     var root = document.getElementById("root");
     var calculator = document.createElement("div");
@@ -68,64 +124,12 @@ var utilities = {
     var numbers = document.getElementsByClassName("number");
 
     for (var i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener("click", append);
+        numbers[i].addEventListener("click", utilities.append);
     }
 
     var notNumbers = document.getElementsByClassName("not-number");
 
-    for (var i = 0; i < notNumbers.length; i++) {
-        notNumbers[i].addEventListener("click", utilities[notNumbers[i].id]);
-    }
-
-    function updateDisplay(number) {
-        var display = document.getElementById("display");
-
-        display.innerHTML = number;
-    }
-
-    function clear() {
-        state.current = 0;
-    }
-
-    function sign() {
-        state.current = -state.current;
-    }
-
-    function percentage() {
-        state.current = state.current / 100;
-    }
-
-
-    function append() {
-        var number = parseInt(this.textContent);
-
-        if (state.operatorClicked) {
-            state.current = 0;
-            state.decimals = null;
-            state.operatorClicked = false;
-        }
-
-        if (state.decimals) {
-            state.current += number / 10**state.decimals++;
-        } else {
-            state.current = state.current * 10 + number;
-        }
-
-        updateDisplay(state.current);
-    }
-
-    function dot() {
-        if (String(state.current).indexOf(".") === -1) {
-            state.decimals = 1;
-        }
-    }
-
-    function equal() {
-        state.current = state.operator(
-            state.current,
-            state.previous
-        );
-
-        state.previous = 0;
+    for (var j = 0; j < notNumbers.length; j++) {
+        notNumbers[j].addEventListener("click", utilities[notNumbers[j].id]);
     }
 })();

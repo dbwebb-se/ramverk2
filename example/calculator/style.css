@@ -1,16 +1,15 @@
 .calculator {
-    font-family: "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #333;
-    margin-top: 60px;
     font-size: 2em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(50px, auto);
     width: 30%;
-    margin: 0 auto;
+    margin: 60px auto 0;
     box-sizing: border-box;
 }
 
