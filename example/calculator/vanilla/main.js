@@ -32,6 +32,8 @@
 
         clear: function() {
             state.current = 0;
+            state.previous = 0;
+            state.decimals = null;
             utilities.updateDisplay();
         },
 
