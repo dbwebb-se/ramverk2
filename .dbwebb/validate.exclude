@@ -24,6 +24,10 @@
 -*/node_modules/*
 -*/vendor/*
 
+-*/react/*
+-*/vue/*
+-*/angular/*
+
 +./build/webroot/*
 -./build/webroot/*/build/*
 -./build/webroot/*/coverage/*
