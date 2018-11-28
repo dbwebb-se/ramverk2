@@ -45,9 +45,7 @@ h1 {
 .game {
     display: flex;
     flex-direction: row;
-    display: flex;
     justify-content: space-around;
-
 }
 
 .board-row::after {

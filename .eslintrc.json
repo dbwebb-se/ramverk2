@@ -7,7 +7,7 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 2017,
+        "ecmaVersion": 2018,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
@@ -15,21 +15,17 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "import",
+        "flowtype",
+        "jsx-a11y",
+        "vue"
     ],
     "rules": {
-        "indent": [
-            2,
-            4,
-            {
-              "SwitchCase": 1
-            }
-        ],
         "linebreak-style": [
             2,
             "unix"
         ],
-        "eol-last": 2,
         "no-trailing-spaces": 2,
         "semi": [
             2,
