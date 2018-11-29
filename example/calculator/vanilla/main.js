@@ -94,34 +94,7 @@
         },
     };
 
-    var root = document.getElementById("root");
-    var calculator = document.createElement("div");
-
-    calculator.className = "calculator";
-
-    calculator.innerHTML += '<div class="display" id="display">' +
-        (state.current || 0) + '</div>' +
-        '<div id="clear" class="btn not-number">C</div>' +
-        '<div id="sign" class="btn not-number">+/-</div>' +
-        '<div id="percentage" class="btn not-number">%</div>' +
-        '<div id="divide" class="btn not-number operator">÷</div>' +
-        '<div class="btn number">7</div>' +
-        '<div class="btn number">8</div>' +
-        '<div class="btn number">9</div>' +
-        '<div id="multiply" class="btn not-number operator">x</div>' +
-        '<div class="btn number">4</div>' +
-        '<div class="btn number">5</div>' +
-        '<div class="btn number">6</div>' +
-        '<div id="subtract" class="btn not-number operator">-</div>' +
-        '<div class="btn number">1</div>' +
-        '<div class="btn number">2</div>' +
-        '<div class="btn number">3</div>' +
-        '<div id="add" class="btn not-number operator">+</div>' +
-        '<div class="btn zero number">0</div>' +
-        '<div id="dot" class="btn not-number">.</div>' +
-        '<div id="equal" class="btn not-number operator">=</div>';
-
-    root.appendChild(calculator);
+    utilities.updateDisplay();
 
     var numbers = document.getElementsByClassName("number");
 
