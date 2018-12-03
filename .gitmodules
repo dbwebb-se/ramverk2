@@ -1,3 +1,6 @@
 [submodule ".solution"]
 	path = .solution
 	url = mosbth@bitbucket.org:mosbth/solution-ramverk2.git
+[submodule "example/simulate-stock"]
+	path = example/simulate-stock
+	url = git@github.com:emilfolino/simulate-stock.git
