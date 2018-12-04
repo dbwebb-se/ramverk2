@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <Board :onClick="handleClick" :squares="getCurrent()" />
-    <GameInfo />
+    <GameInfo :status="getNext()" />
   </div>
 </template>
 
@@ -40,12 +40,13 @@ export default {
 
       this.stepNumber = history.length;
       this.xIsNext = !this.xIsNext;
-      // eslint-disable-next-line
-      console.log(this.history);
     },
     getCurrent() {
       return this.history[this.stepNumber].squares
-    }
+    },
+    getNext() {
+      return this.xIsNext ? 'X' : 'O';
+    },
   }
 }
 
