@@ -5,8 +5,9 @@
     var nav = document.getElementById('nav');
     var content = document.getElementById('content');
 
-    function router () {
+    function router() {
         var url = location.hash.slice(2) || '/';
+
         renderRoute(url);
     }
 
@@ -73,7 +74,7 @@
         return about;
     };
 
-    registerRoute("/", "Home",renderHome);
+    registerRoute("/", "Home", renderHome);
     registerRoute("/about", "About", renderAbout);
 
     renderNav();

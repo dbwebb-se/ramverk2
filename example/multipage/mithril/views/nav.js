@@ -1,5 +1,4 @@
 const m = require("mithril");
-const nav = require("./nav.js");
 
 module.exports = {
     view: function () {
