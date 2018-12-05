@@ -11,8 +11,10 @@
   "author": "Emil Folino",
   "license": "ISC",
   "dependencies": {
-    "mithril": "^1.1.6",
-    "webpack": "^4.26.0",
+    "mithril": "^1.1.6"
+  },
+  "devDependencies": {
+    "webpack": "^4.27.0",
     "webpack-cli": "^3.1.2"
   }
 }
