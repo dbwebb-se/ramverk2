@@ -11,22 +11,30 @@
 
     var utilities = {
         divide: function() {
-            state.operator = (a, b) => a / b;
+            state.operator = function (a, b) {
+                return a / b;
+            };
             utilities.setPrevious();
         },
 
         multiply: function() {
-            state.operator = (a, b) => a * b;
+            state.operator = function(a, b) {
+                return a * b;
+            };
             utilities.setPrevious();
         },
 
         subtract: function () {
-            state.operator = (a, b) => a - b;
+            state.operator = function(a, b) {
+                return a - b;
+            };
             utilities.setPrevious();
         },
 
         add: function() {
-            state.operator = (a, b) => a + b;
+            state.operator = function(a, b) {
+                return a + b;
+            };
             utilities.setPrevious();
         },
 
@@ -74,7 +82,7 @@
             }
 
             if (state.decimals) {
-                state.current += number / 10**state.decimals++;
+                state.current += number / Math.pov(10, state.decimals++);
             } else {
                 state.current = state.current * 10 + number;
             }
