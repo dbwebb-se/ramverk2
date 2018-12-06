@@ -100,8 +100,9 @@
 
 
 
-    function router () {
+    function router() {
         var url = location.hash.slice(2) || '/';
+
         renderRoute(url);
     }
 
@@ -117,6 +118,19 @@
             removeAllNodes(content);
 
             content.appendChild(routes[url]["renderer"]());
+            if (url === "/calculator") {
+                var numbers = document.getElementsByClassName("number");
+
+                for (var i = 0; i < numbers.length; i++) {
+                    numbers[i].addEventListener("click", utilities.append);
+                }
+
+                var notNumbers = document.getElementsByClassName("not-number");
+
+                for (var j = 0; j < notNumbers.length; j++) {
+                    notNumbers[j].addEventListener("click", utilities[notNumbers[j].id]);
+                }
+            }
         }
     }
 
@@ -176,7 +190,7 @@
         var title = document.createElement("h1");
 
         title.textContent = "Calculator";
-        
+
         calculator.appendChild(title);
 
         calculator.innerHTML += '<div class="display" id="display">' +
@@ -204,7 +218,7 @@
         return calculator;
     };
 
-    registerRoute("/", "Home",renderHome);
+    registerRoute("/", "Home", renderHome);
     registerRoute("/about", "About", renderAbout);
     registerRoute("/calculator", "Calculator", renderCalculator);
 
@@ -214,16 +228,4 @@
     window.addEventListener('hashchange', router);
     // Listen on page load:
     window.addEventListener('load', router);
-
-    var numbers = document.getElementsByClassName("number");
-
-    for (var i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener("click", utilities.append);
-    }
-
-    var notNumbers = document.getElementsByClassName("not-number");
-
-    for (var j = 0; j < notNumbers.length; j++) {
-        notNumbers[j].addEventListener("click", utilities[notNumbers[j].id]);
-    }
 })();

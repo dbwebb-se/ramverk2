@@ -36,7 +36,6 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(50px, auto);
-    /*width: 30%;*/
     margin: 60px auto 0;
     box-sizing: border-box;
 }

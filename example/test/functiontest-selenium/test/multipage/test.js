@@ -10,15 +10,18 @@ var webdriver = require("selenium-webdriver");
 var browser = new webdriver.Builder().
     withCapabilities(webdriver.Capabilities.firefox()).build();
 
-browser.get("http://work/ramverk2/example/test/functiontest-selenium/src/multipage/");
+browser.get("http://localhost/git/ramverk2/example/test/" +
+    "functiontest-selenium/src/multipage/");
 
-// let promise = browser.getTitle();
-// 
-// promise.then(function(title) {
-//     console.log(title);
-// })
+// Two different ways to work with promises
+// Way 1
+let promise = browser.getTitle();
 
-// Crashade med default selenium versionen 4.0.0.alpha 1 något, fick sänka till 3.6.0 för att fungera
+promise.then(function(title) {
+    console.log(title);
+});
+
+// Way 2
 browser.getTitle().then(function( title ) {
     console.log(title);
 });
