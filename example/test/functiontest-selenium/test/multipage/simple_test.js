@@ -5,13 +5,12 @@
 
 
 
-// https://blog.testproject.io/2018/03/08/selenium-javascript-best-practices/
 var webdriver = require("selenium-webdriver");
 var browser = new webdriver.Builder().
-    withCapabilities(webdriver.Capabilities.firefox()).build();
+    withCapabilities(webdriver.Capabilities.firefox())
+    .build();
 
-browser.get("http://localhost/git/ramverk2/example/test/" +
-    "functiontest-selenium/src/multipage/");
+browser.get("http://localhost:8082/multipage/#!/");
 
 // Two different ways to work with promises
 // Way 1

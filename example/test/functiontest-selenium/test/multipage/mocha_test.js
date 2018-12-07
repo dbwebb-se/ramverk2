@@ -5,30 +5,26 @@
 
 
 
-// https://blog.testproject.io/2018/03/08/selenium-javascript-best-practices/
 const assert = require("assert");
 const test = require("selenium-webdriver/testing");
 const webdriver = require("selenium-webdriver");
-const By = require("selenium-webdriver").By;
+const By = webdriver.By;
 
 let browser;
 
 
-// Crashade med default selenium versionen 4.0.0.alpha 1 något,
-// fick sänka till 3.6.0 för att fungera
 // Does not work with WSL!! Use cygwin
 
 
 
 // Test suite
-test.describe("Calculator", function() {
+test.describe("Multipage", function() {
     test.beforeEach(function(done) {
         this.timeout(20000);
         browser = new webdriver.Builder().
             withCapabilities(webdriver.Capabilities.firefox()).build();
 
-        browser.get("http://localhost/git/ramverk2/example/test/" +
-            "functiontest-selenium/src/multipage/");
+        browser.get("http://localhost:8082/multipage/#!/");
         done();
     });
 
@@ -73,7 +69,7 @@ test.describe("Calculator", function() {
         });
 
         assertH1("Home");
-        matchUrl("");
+        matchUrl("#!/");
 
         done();
     });
