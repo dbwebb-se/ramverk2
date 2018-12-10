@@ -44,7 +44,6 @@ class App extends Component {
                 return response.json();
             })
             .then(function(result) {
-                console.log(result)
                 that.setState({
                     clicked: true,
                     message: result.contents.quotes[0].quote,
