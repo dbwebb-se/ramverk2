@@ -1,0 +1,36 @@
+.calculator {
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(50px, auto);
+    width: 30%;
+    margin: 60px auto 0;
+    box-sizing: border-box;
+}
+
+.calculator div {
+    padding: 0 0.4em;
+    border: 1px solid #ccc;
+}
+
+.display {
+    grid-column: 1 / 5;
+    background-color: #ddd;
+    color: #222;
+    text-align: right;
+    font-size: 1.6em;
+}
+
+.zero {
+    grid-column: 1 / 3;
+}
+
+.operator {
+    background-color: #001f3f;
+    color: white;
+}
