@@ -37,15 +37,20 @@ class Calculator extends React.Component {
                 current: 0,
                 decimals: null,
                 operatorClicked: false,
+            }, () => {
+                this.appendNumber(number);
             });
+        } else {
+            this.appendNumber(number);
         }
+    }
 
+    appendNumber(number) {
         if (this.state.decimals) {
             this.setState({
                 decimals: this.state.decimals + 1,
                 current: this.state.current + number / 10**(this.state.decimals + 1),
             });
-
         } else {
             this.setState({
                 current: this.state.current * 10 + number,
@@ -99,8 +104,8 @@ class Calculator extends React.Component {
     equal() {
         this.setState({
             current: this.state.operator(
-                this.current,
-                this.previous
+                this.state.current,
+                this.state.previous
             ),
             previous: 0,
         });
