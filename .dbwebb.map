@@ -5,28 +5,25 @@
 #
 
 # kmom01
-me/kmom01/express
+me/kmom01/
 
 # kmom02
-me/kmom02/docker
+me/kmom02/
 
 # kmom03
+me/kmom02/docker
 me/kmom03/unittest
-#?me/kmom03/functest
-
-# kmom04
-me/kmom04/websocket
 
 # kmom05
-me/kmom05/db
+me/kmom05/websocket
 
 # kmom06
-me/kmom06/
+me/kmom06/db
 
 # kmom10
 me/kmom10/
 
 # redovisa
-me/redovisa
-me/app
-me/module
+# me/redovisa
+# me/app
+# me/module
