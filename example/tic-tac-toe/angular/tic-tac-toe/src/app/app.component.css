@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Sigmar+One');
+
+.App {
+    width: 64rem;
+    box-sizing: border-box;
+    padding: 8rem;
+    text-align: center;
+    background-color: #ddd;
+}
+
+h1 {
+    font-size: 4em;
+    font-family: 'Sigmar One', cursive;
+    font-weight: normal;
+}

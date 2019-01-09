@@ -1,0 +1,6 @@
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: "Arial", "Helvetica", sans-serif;
+}
