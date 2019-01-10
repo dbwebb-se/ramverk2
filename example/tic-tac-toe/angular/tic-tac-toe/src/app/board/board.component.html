@@ -1,17 +1,17 @@
 <div class="game-board">
     <div class="board-row">
-        <app-square [value]="this.squares[0]" (gotClicked)="onClicked($event, 0)"></app-square>
-        <app-square [index]="1"></app-square>
-        <app-square [index]="2"></app-square>
+        <app-square [squareValue]="squares[0]" (gotClicked)="onClicked($event, 0)"></app-square>
+        <app-square [squareValue]="squares[1]" (gotClicked)="onClicked($event, 1)"></app-square>
+        <app-square [squareValue]="squares[2]" (gotClicked)="onClicked($event, 2)"></app-square>
     </div>
     <div class="board-row">
-        <app-square [index]="3"></app-square>
-        <app-square [index]="4"></app-square>
-        <app-square [index]="5"></app-square>
+        <app-square [squareValue]="squares[3]" (gotClicked)="onClicked($event, 3)"></app-square>
+        <app-square [squareValue]="squares[4]" (gotClicked)="onClicked($event, 4)"></app-square>
+        <app-square [squareValue]="squares[5]" (gotClicked)="onClicked($event, 5)"></app-square>
     </div>
     <div class="board-row">
-        <app-square [index]="6"></app-square>
-        <app-square [index]="7"></app-square>
-        <app-square [index]="8"></app-square>
+        <app-square [squareValue]="squares[6]" (gotClicked)="onClicked($event, 6)"></app-square>
+        <app-square [squareValue]="squares[7]" (gotClicked)="onClicked($event, 7)"></app-square>
+        <app-square [squareValue]="squares[8]" (gotClicked)="onClicked($event, 8)"></app-square>
     </div>
 </div>

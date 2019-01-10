@@ -1,4 +1,6 @@
 <div class="game">
-  <app-board [squares]="this.history[this.stepNumber]"></app-board>
-  <app-game-info></app-game-info>
+  <app-board
+  [squares]="getCurrent()"
+  (gotClicked)="handleClick($event)"></app-board>
+  <app-game-info [next]="getNext()"></app-game-info>
 </div>

@@ -7,9 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SquareComponent implements OnInit {
   clicked = false;
-  @Input() index: number;
+  @Input() squareValue: string;
   @Output() gotClicked = new EventEmitter<boolean>();
-
 
   constructor() { }
 
@@ -17,7 +16,6 @@ export class SquareComponent implements OnInit {
   }
 
   click() {
-    console.log("click")
     if (!this.clicked) {
         this.clicked = true;
         this.gotClicked.emit(this.clicked);
