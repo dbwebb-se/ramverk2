@@ -1,6 +1,6 @@
 <div class="game-board">
     <div class="board-row">
-        <app-square [index]="0"></app-square>
+        <app-square [value]="this.squares[0]" (gotClicked)="onClicked($event, 0)"></app-square>
         <app-square [index]="1"></app-square>
         <app-square [index]="2"></app-square>
     </div>

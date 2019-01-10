@@ -17,9 +17,10 @@ export class SquareComponent implements OnInit {
   }
 
   click() {
+    console.log("click")
     if (!this.clicked) {
         this.clicked = true;
-        this.gotClicked.emit(true);
+        this.gotClicked.emit(this.clicked);
     }
   }
 }
