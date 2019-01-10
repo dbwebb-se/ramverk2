@@ -1,6 +1,6 @@
 <template>
     <div class="game-info">
-        <div>Next player: {{ status }}</div>
+        <div>{{ status }}</div>
         <div class="history-buttons">{{ moves }}</div>
     </div>
 </template>

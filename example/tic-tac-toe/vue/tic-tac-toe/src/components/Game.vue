@@ -45,7 +45,14 @@ export default {
       return this.history[this.stepNumber].squares
     },
     getNext() {
-      return this.xIsNext ? 'X' : 'O';
+      const history = this.history.slice(0, this.stepNumber + 1);
+      const current = history[history.length - 1];
+      const squares = current.squares.slice();
+      if (calculateWinner(squares)) {
+        return (!this.xIsNext ? 'X' : 'O') + " won the game!";
+      }
+
+      return "Next player: " + (this.xIsNext ? 'X' : 'O');
     },
   }
 }
