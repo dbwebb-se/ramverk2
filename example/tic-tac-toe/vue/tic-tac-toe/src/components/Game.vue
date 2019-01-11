@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <Board :onClick="handleClick" :squares="getCurrent()" />
-    <GameInfo :status="getNext()" />
+    <GameInfo :status="getNext()" :moves="getMoves()" :onJump="jumpTo" />
   </div>
 </template>
 
@@ -54,6 +54,17 @@ export default {
 
       return "Next player: " + (this.xIsNext ? 'X' : 'O');
     },
+    getMoves() {
+        return this.history.map((step, move) => {
+            return move ?
+            'Go to move #' + move :
+            'Go to game start';
+        });
+    },
+    jumpTo(step) {
+        this.stepNumber = step;
+        this.xIsNext = (step % 2) === 0;
+    }
   }
 }
 
