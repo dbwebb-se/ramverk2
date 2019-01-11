@@ -1,4 +1,8 @@
 <div class="game-info">
     <div>Next player: {{ next }}</div>
-    <div class="history-buttons">{{ moves }}</div>
+    <div class="history-buttons">
+        <li *ngFor="let desc of moves; index as move">
+            <button (click)="jump(move)">{{ desc }}</button>
+        </li>
+    </div>
 </div>

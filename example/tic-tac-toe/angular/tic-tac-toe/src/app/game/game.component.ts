@@ -42,6 +42,19 @@ export class GameComponent implements OnInit {
     return this.xIsNext ? 'X' : 'O';
   }
 
+  getMoves() {
+      return this.history.map((step, move) => {
+          return move ?
+          'Go to move #' + move :
+          'Go to game start';
+      });
+  }
+  
+  jumpTo(step) {
+      this.stepNumber = step;
+      this.xIsNext = (step % 2) === 0;
+  }
+
   calculateWinner(squares) {
       const lines = [
           [0, 1, 2],

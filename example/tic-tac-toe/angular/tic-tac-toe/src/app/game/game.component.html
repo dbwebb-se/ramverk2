@@ -1,6 +1,9 @@
 <div class="game">
   <app-board
-  [squares]="getCurrent()"
-  (gotClicked)="handleClick($event)"></app-board>
-  <app-game-info [next]="getNext()"></app-game-info>
+    [squares]="getCurrent()"
+    (gotClicked)="handleClick($event)"></app-board>
+  <app-game-info
+    [next]="getNext()"
+    [moves]="getMoves()"
+    (onJump)="jumpTo($event)"></app-game-info>
 </div>
