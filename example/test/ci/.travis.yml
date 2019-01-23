@@ -11,10 +11,10 @@ git:
     submodules: false
 
 before_script:
-    - make install
+    - npm install
 
 script:
-    - make test
+    - npm test
 
 after_success:
     - npm run report-coveralls
