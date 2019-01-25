@@ -9,6 +9,7 @@
   "scripts": {
       "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
       "docker-latest": "docker-compose run node_alpine npm test",
+      "docker-10": "docker-compose run node_10_alpine npm test",
       "docker-8": "docker-compose run node_8_alpine npm test",
       "docker-6": "docker-compose run node_6_alpine npm test",
       "clean": "rm -rf npm-debug.log coverage .nyc_output",
