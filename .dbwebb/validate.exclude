@@ -17,6 +17,8 @@
 -./.venv
 -*/dist/*
 
+-*/react/*
+
 
 -*/build/*
 -*/coverage/*
