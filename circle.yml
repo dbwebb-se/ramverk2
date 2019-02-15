@@ -1,9 +1,0 @@
-test:
-    pre:
-        - make install
-
-notify:
-    webhooks:
-        # A list of hook hashes, containing the url field
-        # gitter hook
-        - url: https://webhooks.gitter.im/e/d5b1d63d4f3e6f6bd014
